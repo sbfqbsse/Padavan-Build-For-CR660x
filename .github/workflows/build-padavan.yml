@@ -16,7 +16,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     if: github.event.repository.owner.id == github.event.sender.id # 自己点的 Star
 
     steps:
@@ -27,20 +27,24 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |                         # 安装依赖包
         sudo apt-get update
-        sudo apt-get -y install unzip libtool-bin curl cmake gperf gawk flex bison nano xxd fakeroot \
-        cpio git python-docutils gettext automake autopoint texinfo build-essential help2man \
-        pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget
+        sudo apt-get -y install libtool-bin gperf python3-docutils autopoint gettext
         sudo timedatectl set-timezone 'Asia/Shanghai'  # 设置时区
     - name: Clone source code
       run: |                         # 克隆源码
         git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
+    - name: Run shellcheck
+      run: |                         # 运行 shellcheck
+        cd /opt/rt-n56u/trunk/tools
+        sh shellcheck.sh
+    - name: Prepare toolchain
+      run: |                         # 准备工具链
         cd /opt/rt-n56u/toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
     - name: Build Firmware
       env:
         TNAME: CR660x
-      run: |
+      run: |                         # 开始编译固件
         cd /opt/rt-n56u/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
         echo "configs/templates/$TNAME.config not found "
