@@ -67,6 +67,9 @@ jobs:
         #sed -i '/自定义项/d' .config
         #echo "自定义项=y" >> .config
         #########################################################################################
+        #修改默认后台地址为192.168.123.1
+        sed -i 's/192.168.2/192.168.123/g' user/shared/defaults.h
+        #清理与编译
         sudo ./clear_tree
         sudo ./build_firmware_modify $TNAME 0
         sudo mv -f images/*.trx /opt/images/
