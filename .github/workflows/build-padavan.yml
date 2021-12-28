@@ -50,7 +50,7 @@ jobs:
         echo "configs/templates/$TNAME.config not found "
         exit 1
         fi
-        # cp -f configs/templates/$TNAME.config .config
+        #cp -f configs/templates/$TNAME.config .config
         ################################################################################################
         # 因不同型号配置功能不一样，所以先把配置项删除，如果你自己要添加其他的，也要写上删除这一条，切记！！！
         ################################################################################################
@@ -95,7 +95,7 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_IPERF3=n" >> configs/templates/$TNAME.config # IPERF3
         echo "CONFIG_FIRMWARE_INCLUDE_MTR=n" >> configs/templates/$TNAME.config # MTR
         echo "CONFIG_FIRMWARE_INCLUDE_SOCAT=n" >> configs/templates/$TNAME.config # SOCAT
-        cp -f configs/templates/$TNAME.config .config
+        #cp -f configs/templates/$TNAME.config .config
         # 修改默认后台地址为192.168.123.1
         sed -i 's/192.168.2/192.168.123/g' user/shared/defaults.h
         # 清理与编译
