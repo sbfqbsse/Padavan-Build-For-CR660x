@@ -97,8 +97,14 @@ jobs:
         # 如果 /opt/rt-n56u/trunk 目录中不存在 .config 文件，先执行清理脚本 ./clear_tree，后编译的话，执行清理时会报错
         # Project config file .config not found! Terminate.
         #cp -f configs/templates/$TNAME.config .config
-        # 修改默认后台地址为192.168.123.1
-        sed -i 's/192.168.2/192.168.123/g' user/shared/defaults.h
+        # 修改默认默认网关
+        sed -i 's/192.168.2.1/192.168.123.1/g' user/shared/defaults.h
+        sed -i 's/192.168.2.100/192.168.123.100/g' user/shared/defaults.h
+        sed -i 's/192.168.2.244/192.168.123.244/g' user/shared/defaults.h
+        # 修改后台地址中的相关192.168.2.1 
+        sed -i 's/192.168.2.1/192.168.123.1/g' user/www/n56u_ribbon_fixed/Restarting.asp
+        sed -i 's/192.168.2.1/192.168.123.1/g' user/www/dict/EN.footer
+        sed -i 's/192.168.2.1/192.168.123.1/g' user/www/dict/CN.dict
         # 编译
         sudo ./build_firmware_ci $TNAME
         sudo mv -f images/*.trx /opt/images/
