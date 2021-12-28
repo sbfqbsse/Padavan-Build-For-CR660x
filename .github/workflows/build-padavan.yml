@@ -54,7 +54,7 @@ jobs:
         ################################################################################################
         # 因不同型号配置功能不一样，所以先把配置项删除，如果你自己要添加其他的，也要写上删除这一条，切记！！！
         ################################################################################################
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_TCPUMP/d' .configs/templates/$TNAME.config # 用于抓包的 tcpdump
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_TCPUMP/d' configs/templates/$TNAME.config # 用于抓包的 tcpdump
         sed -i '/CONFIG_FIRMWARE_INCLUDE_EAP_PEAP/d' configs/templates/$TNAME.config # EAP-TTLS 和 EAP-PEAP 身份验证支持
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SFTP/d' configs/templates/$TNAME.config # SFTP
         sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENSSH/d' configs/templates/$TNAME.config # OpenSSH
