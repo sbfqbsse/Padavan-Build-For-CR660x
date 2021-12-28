@@ -1,4 +1,4 @@
-#修改TNAME: CR660x 中的CR660x为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同
+# 修改TNAME: CR660x 中的CR660x为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同
 name: Build Padavan
 
 on: 
@@ -52,28 +52,58 @@ jobs:
         fi
         cp -f configs/templates/$TNAME.config .config
         ################################################################################################
-        #因不同型号配置功能不一样，所以先把配置项删除，如果你自己要添加其他的，也要写上删除这一条，切记！！！
+        # 因不同型号配置功能不一样，所以先把配置项删除，如果你自己要添加其他的，也要写上删除这一条，切记！！！
         ################################################################################################
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_VLMCSD/d' .config # 删除用于KMS的VLMCSD
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_DOGCOM/d' .config # 删除用于Drcom的工具DOGCOM
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENVPN/d' .config #删除OPENVPN配置项目
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_XUPNPD/d' .config #删除用于IPTV的XUPNPD
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_TCPUMP/d' .config # 用于抓包的 tcpdump
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_EAP_PEAP/d' .config # EAP-TTLS 和 EAP-PEAP 身份验证支持
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_SFTP/d' .config # SFTP
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENSSH/d' .config # OpenSSH
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENVPN/d' .config # OPENVPN
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC/d' .config # 椭圆曲线（EC）
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE/d' .config # OpenSSL
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_XUPNPD/d' .config # 用于IPTV的XUPNPD
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_FFMPEG_NEW/d' .config # ffmpeg
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_CURL/d' .config # CURL
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_DOGCOM/d' .config # 用于Drcom的工具DOGCOM
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_NAPT66/d' .config # 用于二级路由、教育网分发IPv6地址的NAPT66
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_VLMCSD/d' .config # 用于KMS的VLMCSD
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_TTYD/d' .config # 网页终端模拟器TTYD
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_HTOP/d' .config # HTOP
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_NANO/d' .config # NANO
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_IPERF3/d' .config # IPERF3
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_MTR/d' .config # MTR
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_SOCAT/d' .config # SOCAT
         ######################################################################
-        #以下选项是定义你需要的功能（y=集成,n=忽略），重新写入到.config文件
+        # 以下选项是定义你需要的功能（y=集成,n=忽略），重新写入到.config文件
         ######################################################################
-        echo "CONFIG_FIRMWARE_INCLUDE_VLMCSD=n" >> .config #删除用于KMS的工具VLMCSD
-        echo "CONFIG_FIRMWARE_INCLUDE_DOGCOM=n" >> .config #删除用于Drcom的工具DOGCOM
-        echo "CONFIG_FIRMWARE_INCLUDE_OPENVPN=n" >> .config #删除OPENVPN
-        echo "CONFIG_FIRMWARE_INCLUDE_XUPNPD=n" >> .config #删除用于IPTV的XUPNPD
+        echo "CONFIG_FIRMWARE_INCLUDE_TCPUMP=n" >> .config # 删除用于抓包的 tcpdump
+        echo "CONFIG_FIRMWARE_INCLUDE_EAP_PEAP=n" >> .config # 删除 EAP-TTLS 和 EAP-PEAP 身份验证支持
+        echo "CONFIG_FIRMWARE_INCLUDE_SFTP=n" >> .config # 删除 SFTP
+        echo "CONFIG_FIRMWARE_INCLUDE_OPENSSH=n" >> .config # 删除 OpenSSH
+        echo "CONFIG_FIRMWARE_INCLUDE_OPENVPN=n" >> .config # 删除OPENVPN
+        echo "CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=n" >> .config # 删除椭圆曲线（EC）
+        echo "CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=n" >> .config # 删除 OpenSSL
+        echo "CONFIG_FIRMWARE_INCLUDE_XUPNPD=n" >> .config # 删除用于IPTV的XUPNPD
+        echo "CONFIG_FIRMWARE_INCLUDE_FFMPEG_NEW=n" >> .config # 删除 ffmpeg
+        echo "CONFIG_FIRMWARE_INCLUDE_CURL=n" >> .config # 删除 CURL
+        echo "CONFIG_FIRMWARE_INCLUDE_DOGCOM=n" >> .config # 删除用于Drcom的工具DOGCOM
+        echo "CONFIG_FIRMWARE_INCLUDE_NAPT66=n" >> .config # 删除用于二级路由、教育网分发IPv6地址的NAPT66
+        echo "CONFIG_FIRMWARE_INCLUDE_VLMCSD=n" >> .config # 删除用于KMS的工具VLMCSD
+        echo "CONFIG_FIRMWARE_INCLUDE_TTYD=n" >> .config # 删除网页终端模拟器TTYD
+        echo "CONFIG_FIRMWARE_INCLUDE_HTOP=n" >> .config # HTOP
+        echo "CONFIG_FIRMWARE_INCLUDE_NANO=n" >> .config # NANO
+        echo "CONFIG_FIRMWARE_INCLUDE_IPERF3=n" >> .config # IPERF3
+        echo "CONFIG_FIRMWARE_INCLUDE_MTR=n" >> .config # MTR
+        echo "CONFIG_FIRMWARE_INCLUDE_SOCAT=n" >> .config # SOCAT
         #########################################################################################
-        #自定义添加其它功能请参考源码configs/templates/目录下的config文件。按照上面的格式添加即可
-        #格式如下：
+        # 自定义添加其它功能请参考源码configs/templates/目录下的config文件。按照上面的格式添加即可
+        # 格式如下：
         #sed -i '/自定义项/d' .config
         #echo "自定义项=y" >> .config
         #########################################################################################
-        #修改默认后台地址为192.168.123.1
+        # 修改默认后台地址为192.168.123.1
         sed -i 's/192.168.2/192.168.123/g' user/shared/defaults.h
-        #清理与编译
+        # 清理与编译
         sudo ./clear_tree
         sudo ./build_firmware_modify $TNAME 0
         sudo mv -f images/*.trx /opt/images/
