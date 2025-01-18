@@ -75,16 +75,16 @@ jobs:
         ######################################################################
         # 以下选项是定义你需要的功能（y=集成,n=忽略），重新写入到.config文件
         ######################################################################
-        echo "CONFIG_FIRMWARE_INCLUDE_TCPUMP=n" >> configs/templates/$TNAME.config # 删除用于抓包的 tcpdump
-        echo "CONFIG_FIRMWARE_INCLUDE_EAP_PEAP=n" >> configs/templates/$TNAME.config # 删除 EAP-TTLS 和 EAP-PEAP 身份验证支持
-        echo "CONFIG_FIRMWARE_INCLUDE_SFTP=n" >> configs/templates/$TNAME.config # 删除 SFTP
-        echo "CONFIG_FIRMWARE_INCLUDE_OPENSSH=n" >> configs/templates/$TNAME.config # 删除 OpenSSH
-        echo "CONFIG_FIRMWARE_INCLUDE_OPENVPN=n" >> configs/templates/$TNAME.config # 删除OPENVPN
-        echo "CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=n" >> configs/templates/$TNAME.config # 删除椭圆曲线（EC）
-        echo "CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=n" >> configs/templates/$TNAME.config # 删除 OpenSSL
-        echo "CONFIG_FIRMWARE_INCLUDE_XUPNPD=n" >> configs/templates/$TNAME.config # 删除用于IPTV的XUPNPD
-        echo "CONFIG_FIRMWARE_INCLUDE_FFMPEG_NEW=n" >> configs/templates/$TNAME.config # 删除 ffmpeg
-        echo "CONFIG_FIRMWARE_INCLUDE_CURL=n" >> configs/templates/$TNAME.config # 删除 CURL
+        echo "CONFIG_FIRMWARE_INCLUDE_TCPUMP=y" >> configs/templates/$TNAME.config # 删除用于抓包的 tcpdump
+        echo "CONFIG_FIRMWARE_INCLUDE_EAP_PEAP=y" >> configs/templates/$TNAME.config # 删除 EAP-TTLS 和 EAP-PEAP 身份验证支持
+        echo "CONFIG_FIRMWARE_INCLUDE_SFTP=y" >> configs/templates/$TNAME.config # 删除 SFTP
+        echo "CONFIG_FIRMWARE_INCLUDE_OPENSSH=y" >> configs/templates/$TNAME.config # 删除 OpenSSH
+        echo "CONFIG_FIRMWARE_INCLUDE_OPENVPN=y" >> configs/templates/$TNAME.config # 删除OPENVPN
+        echo "CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y" >> configs/templates/$TNAME.config # 删除椭圆曲线（EC）
+        echo "CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y" >> configs/templates/$TNAME.config # 删除 OpenSSL
+        echo "CONFIG_FIRMWARE_INCLUDE_XUPNPD=y" >> configs/templates/$TNAME.config # 删除用于IPTV的XUPNPD
+        echo "CONFIG_FIRMWARE_INCLUDE_FFMPEG_NEW=y" >> configs/templates/$TNAME.config # 删除 ffmpeg
+        echo "CONFIG_FIRMWARE_INCLUDE_CURL=y" >> configs/templates/$TNAME.config # 删除 CURL
         echo "CONFIG_FIRMWARE_INCLUDE_DOGCOM=n" >> configs/templates/$TNAME.config # 删除用于Drcom的工具DOGCOM
         echo "CONFIG_FIRMWARE_INCLUDE_NAPT66=n" >> configs/templates/$TNAME.config # 删除用于二级路由、教育网分发IPv6地址的NAPT66
         echo "CONFIG_FIRMWARE_INCLUDE_VLMCSD=n" >> configs/templates/$TNAME.config # 删除用于KMS的工具VLMCSD
