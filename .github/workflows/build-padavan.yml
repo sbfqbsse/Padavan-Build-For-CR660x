@@ -31,7 +31,7 @@ jobs:
         sudo timedatectl set-timezone 'Asia/Shanghai'  # 设置时区
     - name: Clone source code
       run: |                         # 克隆源码
-        git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
+        git clone --depth=1 https://github.com/sbfqbsse/rt-n56u.git /opt/rt-n56u
     - name: Run shellcheck
       run: |                         # 运行 shellcheck
         cd /opt/rt-n56u
