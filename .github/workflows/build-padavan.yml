@@ -96,7 +96,7 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_NANO=n" >> configs/templates/$TNAME.config # NANO
         echo "CONFIG_FIRMWARE_INCLUDE_IPERF3=y" >> configs/templates/$TNAME.config # 启用IPERF3
         echo "CONFIG_FIRMWARE_INCLUDE_MTR=n" >> configs/templates/$TNAME.config # MTR
-        echo "CONFIG_FIRMWARE_INCLUDE_SOCAT=n" >> configs/templates/$TNAME.config # SOCAT
+        echo "CONFIG_FIRMWARE_INCLUDE_SOCAT=y" >> configs/templates/$TNAME.config # SOCAT
         echo "CONFIG_FIRMWARE_INCLUDE_FRPC=y" >> configs/templates/$TNAME.config # 启用frpc
         echo "CONFIG_FIRMWARE_INCLUDE_FRPS=y" >> configs/templates/$TNAME.config # 启用frps
         echo "CONFIG_FIRMWARE_INCLUDE_WIREGUARD=y" >> configs/templates/$TNAME.config # 启用WireGuard
