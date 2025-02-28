@@ -74,7 +74,6 @@ jobs:
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SOCAT/d' configs/templates/$TNAME.config # SOCAT
         sed -i '/CONFIG_FIRMWARE_INCLUDE_FRPC/d' configs/templates/$TNAME.config # frpc
         sed -i '/CONFIG_FIRMWARE_INCLUDE_FRPS/d' configs/templates/$TNAME.config # frps
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_WIREGUARD/d' configs/templates/$TNAME.config # WireGuard
         ######################################################################
         # 以下选项是定义你需要的功能（y=集成,n=忽略），重新写入到.config文件
         ######################################################################
@@ -99,7 +98,6 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_SOCAT=y" >> configs/templates/$TNAME.config # SOCAT
         echo "CONFIG_FIRMWARE_INCLUDE_FRPC=y" >> configs/templates/$TNAME.config # 启用frpc
         echo "CONFIG_FIRMWARE_INCLUDE_FRPS=y" >> configs/templates/$TNAME.config # 启用frps
-        echo "CONFIG_FIRMWARE_INCLUDE_WIREGUARD=y" >> configs/templates/$TNAME.config # 启用WireGuard
         # 如果 /opt/rt-n56u/trunk 目录中不存在 .config 文件，先执行清理脚本 ./clear_tree，后编译的话，执行清理时会报错
         # Project config file .config not found! Terminate.
         #cp -f configs/templates/$TNAME.config .config
